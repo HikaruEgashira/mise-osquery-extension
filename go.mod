@@ -1,4 +1,4 @@
-module github.com/HikaruEgashira/version-manager-packages-osquery-extension
+module github.com/HikaruEgashira/mise-osquery-extension
 
 go 1.25.1
 

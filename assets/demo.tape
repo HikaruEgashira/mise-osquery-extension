@@ -10,15 +10,15 @@ Type "osqueryi --extension $(which version_manager_packages_extension)" Sleep 20
 
 Sleep 1.5s
 
-Type "SELECT tool, version, manager FROM version_manager_packages LIMIT 5;" Sleep 200ms Enter
+Type "SELECT tool, version, manager FROM mise_packages LIMIT 5;" Sleep 200ms Enter
 
 Sleep 2s
 
-Type "SELECT manager, COUNT(*) as count FROM version_manager_packages GROUP BY manager;" Sleep 200ms Enter
+Type "SELECT manager, COUNT(*) as count FROM mise_packages GROUP BY manager;" Sleep 200ms Enter
 
 Sleep 2s
 
-Type "SELECT tool, version FROM version_manager_packages WHERE tool = 'node';" Sleep 200ms Enter
+Type "SELECT tool, version FROM mise_packages WHERE tool = 'node';" Sleep 200ms Enter
 
 Sleep 2s
 

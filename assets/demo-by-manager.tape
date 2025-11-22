@@ -11,7 +11,7 @@ Type "osqueryi --extension $(which version_manager_packages_extension)" Enter
 Sleep 1s
 Show
 
-Type "SELECT tool, version FROM version_manager_packages WHERE manager = 'mise';" Sleep 100ms Enter
+Type "SELECT tool, version FROM mise_packages WHERE manager = 'mise';" Sleep 100ms Enter
 
 Sleep 1.5s
 

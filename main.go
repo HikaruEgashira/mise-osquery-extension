@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/HikaruEgashira/version-manager-packages-osquery-extension/pkg/scanner"
+	"github.com/HikaruEgashira/mise-osquery-extension/pkg/scanner"
 	"github.com/osquery/osquery-go"
 	"github.com/osquery/osquery-go/plugin/table"
 )
@@ -57,7 +57,7 @@ func main() {
 		log.Printf("Creating extension manager server...")
 	}
 	server, err := osquery.NewExtensionManagerServer(
-		"version_manager_packages_extension",
+		"mise_packages_extension",
 		*socket,
 		osquery.ServerTimeout(time.Duration(*timeout)*time.Second),
 		osquery.ServerPingInterval(time.Duration(*interval)*time.Second),
@@ -77,11 +77,11 @@ func main() {
 	}
 
 	if *verbose {
-		log.Printf("Registering table plugin: version_manager_packages")
+		log.Printf("Registering table plugin: mise_packages")
 	}
-	server.RegisterPlugin(table.NewPlugin("version_manager_packages", columns, func(ctx context.Context, queryContext table.QueryContext) ([]map[string]string, error) {
+	server.RegisterPlugin(table.NewPlugin("mise_packages", columns, func(ctx context.Context, queryContext table.QueryContext) ([]map[string]string, error) {
 		if *verbose {
-			log.Printf("Table query called for version_manager_packages")
+			log.Printf("Table query called for mise_packages")
 		}
 		packages, err := scanner.ScanAllManagers()
 		if err != nil {
@@ -107,8 +107,8 @@ func main() {
 		log.Printf("Table plugin registered successfully")
 	}
 
-	log.Printf("Starting version_manager_packages extension on socket: %s", *socket)
-	log.Printf("Registered table: version_manager_packages")
+	log.Printf("Starting mise_packages extension on socket: %s", *socket)
+	log.Printf("Registered table: mise_packages")
 	if err := server.Run(); err != nil {
 		log.Fatalf("Error running extension: %v", err)
 	}

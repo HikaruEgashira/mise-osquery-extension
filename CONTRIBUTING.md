@@ -1,4 +1,4 @@
-# Contributing to version-manager-packages-osquery-extension
+# Contributing to mise-osquery-extension
 
 Thank you for considering contributing to this project! This document provides guidelines for contributing.
 

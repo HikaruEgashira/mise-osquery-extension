@@ -5,7 +5,7 @@ before:
     - go mod tidy
 
 builds:
-  - id: version-manager-packages-osquery-extension
+  - id: mise-osquery-extension
     main: .
     binary: version_manager_packages_extension
     env:
@@ -34,7 +34,7 @@ source:
   format: 'tar.gz'
 
 archives:
-  - id: version-manager-packages-osquery-extension
+  - id: mise-osquery-extension
     name_template: >-
       {{ .ProjectName }}_
       {{- title .Os }}_

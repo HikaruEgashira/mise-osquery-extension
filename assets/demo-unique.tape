@@ -11,7 +11,7 @@ Type "osqueryi --extension $(which version_manager_packages_extension)" Enter
 Sleep 1s
 Show
 
-Type "SELECT DISTINCT tool FROM version_manager_packages ORDER BY tool;" Sleep 100ms Enter
+Type "SELECT DISTINCT tool FROM mise_packages ORDER BY tool;" Sleep 100ms Enter
 
 Sleep 1.5s
 

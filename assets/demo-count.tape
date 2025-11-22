@@ -11,7 +11,7 @@ Type "osqueryi --extension $(which version_manager_packages_extension)" Enter
 Sleep 1s
 Show
 
-Type "SELECT manager, COUNT(*) as count FROM version_manager_packages GROUP BY manager;" Sleep 100ms Enter
+Type "SELECT manager, COUNT(*) as count FROM mise_packages GROUP BY manager;" Sleep 100ms Enter
 
 Sleep 1.5s
 

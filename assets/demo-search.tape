@@ -11,7 +11,7 @@ Type "osqueryi --extension $(which version_manager_packages_extension)" Enter
 Sleep 1s
 Show
 
-Type "SELECT * FROM version_manager_packages WHERE tool LIKE '%node%';" Sleep 100ms Enter
+Type "SELECT * FROM mise_packages WHERE tool LIKE '%node%';" Sleep 100ms Enter
 
 Sleep 1.5s
 

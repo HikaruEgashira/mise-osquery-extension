@@ -5,7 +5,7 @@ osquery extension written in Go to discover installed packages from version mana
 ## Installation
 
 ```bash
-mise use -g github:HikaruEgashira/version-manager-packages-osquery-extension
+mise use -g github:HikaruEgashira/mise-osquery-extension
 
 # Linux
 sudo chown root:root $(which version_manager_packages_extension)
@@ -16,13 +16,13 @@ sudo chown root:wheel $(which version_manager_packages_extension)
 sudo chmod 755 $(which version_manager_packages_extension)
 ```
 
-For other installation methods, see the [releases page](https://github.com/HikaruEgashira/version-manager-packages-osquery-extension/releases).
+For other installation methods, see the [releases page](https://github.com/HikaruEgashira/mise-osquery-extension/releases).
 
 ## Quick Start
 
 ```bash
 osqueryi --extension $(which version_manager_packages_extension)
-> SELECT tool, version, manager FROM version_manager_packages;
+> SELECT tool, version, manager FROM mise_packages;
 ```
 
 ## Features
@@ -35,7 +35,7 @@ osqueryi --extension $(which version_manager_packages_extension)
 ## Table Schema
 
 ```sql
-CREATE TABLE version_manager_packages (
+CREATE TABLE mise_packages (
     tool TEXT,
     version TEXT,
     manager TEXT,
@@ -53,37 +53,37 @@ CREATE TABLE version_manager_packages (
 ### Query all packages
 
 ```sql
-SELECT * FROM version_manager_packages;
+SELECT * FROM mise_packages;
 ```
 
 ### Query packages by tool
 
 ```sql
-SELECT tool, version, manager FROM version_manager_packages WHERE tool = 'node';
+SELECT tool, version, manager FROM mise_packages WHERE tool = 'node';
 ```
 
 ### Count packages per manager
 
 ```sql
-SELECT manager, COUNT(*) as count FROM version_manager_packages GROUP BY manager;
+SELECT manager, COUNT(*) as count FROM mise_packages GROUP BY manager;
 ```
 
 ### Find specific tool versions
 
 ```sql
-SELECT * FROM version_manager_packages WHERE tool LIKE '%node%';
+SELECT * FROM mise_packages WHERE tool LIKE '%node%';
 ```
 
 ### List unique tools
 
 ```sql
-SELECT DISTINCT tool FROM version_manager_packages ORDER BY tool;
+SELECT DISTINCT tool FROM mise_packages ORDER BY tool;
 ```
 
 ### Find all Python installations
 
 ```sql
-SELECT tool, version, install_path FROM version_manager_packages WHERE tool = 'python';
+SELECT tool, version, install_path FROM mise_packages WHERE tool = 'python';
 ```
 
 See [example_queries.sql](example_queries.sql) for more SQL query examples.
