@@ -1,0 +1,19 @@
+Output demo-search.gif
+
+Set FontSize 24
+Set Width 1200
+Set Height 600
+Set Padding 20
+Set TypingSpeed 30ms
+
+Hide
+Type "osqueryi --extension $(which version_manager_packages_extension)" Enter
+Sleep 1s
+Show
+
+Type "SELECT * FROM version_manager_packages WHERE tool LIKE '%node%';" Sleep 100ms Enter
+
+Sleep 1.5s
+
+Hide
+Type ".quit" Enter

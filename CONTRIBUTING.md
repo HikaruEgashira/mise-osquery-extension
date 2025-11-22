@@ -1,75 +1,150 @@
-# Contributing
+# Contributing to version-manager-packages-osquery-extension
 
-Thank you for your interest in contributing to this project!
+Thank you for considering contributing to this project! This document provides guidelines for contributing.
+
+## How to Contribute
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Add tests for new functionality
+5. Ensure all tests pass (`go test ./...`)
+6. Commit your changes with conventional commits
+7. Push to your fork (`git push origin feature/amazing-feature`)
+8. Open a Pull Request
 
 ## Development Setup
 
-1. Clone the repository:
-```bash
-git clone https://github.com/HikaruEgashira/version-manager-packages-osquery-extension.git
-cd version-manager-packages-osquery-extension
-```
+### Prerequisites
 
-2. Install dependencies:
+- Go 1.21 or higher
+- osquery installed on your system
+
+### Build and Test
+
 ```bash
+# Install dependencies
 go mod download
-```
 
-3. Run tests:
-```bash
+# Build the extension
+go build -o version_manager_packages_extension .
+
+# Run tests
 go test -v ./...
+
+# Run tests with coverage
+go test -coverprofile=coverage.out ./...
+go tool cover -html=coverage.out -o coverage.html
+
+# Format code
+go fmt ./...
 ```
 
-## Building
+### Project Structure
 
-Build the extension:
-```bash
-go build -o version_manager_packages_extension
+```
+.
+├── main.go              # Extension entry point
+├── pkg/
+│   └── scanner/
+│       ├── scanner.go      # Core scanning logic
+│       └── scanner_test.go # Unit tests
+├── .github/
+│   └── workflows/
+│       └── release.yml  # Release workflow
+├── .goreleaser.yaml
+├── go.mod
+└── README.md
 ```
 
-## Testing
+## Code Guidelines
 
-Run all tests:
-```bash
-go test -v ./...
+### Performance Requirements
+
+**CRITICAL: Directory Walking Restrictions**
+
+- Avoid recursive directory traversal where possible
+- `filepath.WalkDir()` should be used judiciously as it can cause performance issues
+- Be mindful of scanning large directory trees
+
+**Rationale:**
+- Performance can degrade significantly when scanning large directories
+- Poor performance degrades user experience
+
+**Alternatives:**
+- Use indexed data when available
+- Leverage existing package manager cache structures
+- Accept feature limitations if no efficient implementation exists
+
+### Code Quality
+
+- Write clear, idiomatic Go code
+- Add unit tests for new functionality
+- Maintain test coverage above 80%
+- Use meaningful variable and function names
+- Add comments for complex logic
+
+### Testing Requirements
+
+All contributions must include:
+- Unit tests for new functions
+- Integration tests for new features
+- Test coverage should not decrease
+
+## Adding a New Version Manager
+
+To add support for a new version manager:
+
+1. Add scanner function in `pkg/scanner/scanner.go`:
+```go
+func ScanYourManager() ([]Package, error) {
+    home, _ := os.UserHomeDir()
+    if home == "" {
+        return []Package{}, nil
+    }
+    // Implementation
+    return scanInstallsDirectory(installsPath, "yourmanager")
+}
 ```
 
-Run tests with coverage:
-```bash
-go test -v -cover ./...
+2. Register in `ScanAllManagers()`:
+```go
+{"yourmanager", ScanYourManager},
 ```
 
-## Testing with osquery
-
-1. Build the extension:
-```bash
-go build -o version_manager_packages_extension
+3. Add comprehensive tests in `scanner_test.go`:
+```go
+func TestScanYourManager(t *testing.T) {
+    // Test implementation
+}
 ```
 
-2. Run osqueryi with the extension:
-```bash
-osqueryi --extension ./version_manager_packages_extension
-```
+4. Update README.md with the new version manager information
 
-3. Query the table:
-```sql
-SELECT * FROM version_manager_packages;
-```
+## Code Review Process
 
-## Code Style
+All submissions require review. We use GitHub pull requests for this purpose. The review process includes:
 
-- Follow standard Go conventions
-- Run `go fmt` before committing
-- Run `go vet` to catch common mistakes
-- Add tests for new features
+- Code quality and style check
+- Test coverage verification
+- Performance impact assessment
+- Documentation completeness
 
-## Pull Request Process
+## Commit Message Guidelines
 
-1. Fork the repository
-2. Create a new branch for your feature
-3. Make your changes
-4. Run tests and ensure they pass
-5. Submit a pull request
+Use conventional commits format:
+
+- `feat: add support for new version manager`
+- `fix: correct path resolution on Windows`
+- `docs: update installation instructions`
+- `test: add tests for edge cases`
+- `refactor: improve error handling`
+
+## Questions or Issues?
+
+- Open an issue for bugs or feature requests
+- Use discussions for questions and ideas
+- Check existing issues before creating new ones
 
 ## License
 

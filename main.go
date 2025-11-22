@@ -15,7 +15,7 @@ import (
 func main() {
 	var (
 		socket   = flag.String("socket", "", "Path to osquery socket")
-		timeout  = flag.Int("timeout", 3, "Timeout in seconds")
+		timeout  = flag.Int("timeout", 10, "Timeout in seconds")
 		interval = flag.Int("interval", 3, "Interval in seconds")
 		verbose  = flag.Bool("verbose", false, "Enable verbose logging")
 	)

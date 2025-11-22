@@ -1,24 +1,16 @@
-# Binaries for programs and plugins
+# Binaries
+version_manager_packages_extension
 *.exe
-*.exe~
 *.dll
 *.so
 *.dylib
 
-# Test binary, built with `go test -c`
-*.test
+# Test coverage
+coverage.out
+coverage.html
 
-# Output of the go coverage tool
-*.out
-
-# Dependency directories
+# Go
 vendor/
-
-# Go workspace file
-go.work
-
-# Binary output
-version_manager_packages_extension
 
 # IDE
 .vscode/
