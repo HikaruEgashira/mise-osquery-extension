@@ -46,7 +46,7 @@ func main() {
 	}
 
 	if *socket == "" {
-		log.Fatalln("Usage: version_manager_packages_extension --socket <path>")
+		log.Fatalln("Usage: mise_packages_extension --socket <path>")
 	}
 
 	if *verbose {

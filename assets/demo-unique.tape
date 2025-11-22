@@ -7,7 +7,7 @@ Set Padding 20
 Set TypingSpeed 30ms
 
 Hide
-Type "osqueryi --extension $(which version_manager_packages_extension)" Enter
+Type "osqueryi --extension $(which mise_packages_extension)" Enter
 Sleep 1s
 Show
 

@@ -8,12 +8,12 @@ osquery extension written in Go to discover installed packages from version mana
 mise use -g github:HikaruEgashira/mise-osquery-extension
 
 # Linux
-sudo chown root:root $(which version_manager_packages_extension)
-sudo chmod 755 $(which version_manager_packages_extension)
+sudo chown root:root $(which mise_packages_extension)
+sudo chmod 755 $(which mise_packages_extension)
 
 # macOS
-sudo chown root:wheel $(which version_manager_packages_extension)
-sudo chmod 755 $(which version_manager_packages_extension)
+sudo chown root:wheel $(which mise_packages_extension)
+sudo chmod 755 $(which mise_packages_extension)
 ```
 
 For other installation methods, see the [releases page](https://github.com/HikaruEgashira/mise-osquery-extension/releases).
@@ -21,7 +21,7 @@ For other installation methods, see the [releases page](https://github.com/Hikar
 ## Quick Start
 
 ```bash
-osqueryi --extension $(which version_manager_packages_extension)
+osqueryi --extension $(which mise_packages_extension)
 > SELECT tool, version, manager FROM mise_packages;
 ```
 

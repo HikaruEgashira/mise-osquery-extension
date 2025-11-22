@@ -6,7 +6,7 @@ Set Height 600
 Set Padding 20
 Set TypingSpeed 30ms
 
-Type "osqueryi --extension $(which version_manager_packages_extension)" Sleep 200ms Enter
+Type "osqueryi --extension $(which mise_packages_extension)" Sleep 200ms Enter
 
 Sleep 1.5s
 

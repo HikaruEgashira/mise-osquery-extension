@@ -27,7 +27,7 @@ Thank you for considering contributing to this project! This document provides g
 go mod download
 
 # Build the extension
-go build -o version_manager_packages_extension .
+go build -o mise_packages_extension .
 
 # Run tests
 go test -v ./...

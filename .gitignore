@@ -1,5 +1,5 @@
 # Binaries
-version_manager_packages_extension
+mise_packages_extension
 *.exe
 *.dll
 *.so

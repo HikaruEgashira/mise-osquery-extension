@@ -7,7 +7,7 @@ before:
 builds:
   - id: mise-osquery-extension
     main: .
-    binary: version_manager_packages_extension
+    binary: mise_packages_extension
     env:
       - CGO_ENABLED=0
     goos:
