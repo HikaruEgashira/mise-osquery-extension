@@ -20,6 +20,8 @@ For other installation methods, see the [releases page](https://github.com/Hikar
 
 ## Quick Start
 
+![Demo](assets/demo.gif)
+
 ```bash
 osqueryi --extension $(which mise_packages_extension)
 > SELECT tool, version, manager FROM mise_packages;
@@ -52,17 +54,23 @@ CREATE TABLE mise_packages (
 
 ### Query all packages
 
+![Query all packages](assets/demo-all.gif)
+
 ```sql
 SELECT * FROM mise_packages;
 ```
 
-### Query packages by tool
+### Query packages by manager
+
+![Query packages by manager](assets/demo-by-manager.gif)
 
 ```sql
-SELECT tool, version, manager FROM mise_packages WHERE tool = 'node';
+SELECT tool, version FROM mise_packages WHERE manager = 'mise';
 ```
 
 ### Count packages per manager
+
+![Count packages per manager](assets/demo-count.gif)
 
 ```sql
 SELECT manager, COUNT(*) as count FROM mise_packages GROUP BY manager;
@@ -70,27 +78,25 @@ SELECT manager, COUNT(*) as count FROM mise_packages GROUP BY manager;
 
 ### Find specific tool versions
 
+![Find specific package](assets/demo-search.gif)
+
 ```sql
 SELECT * FROM mise_packages WHERE tool LIKE '%node%';
 ```
 
 ### List unique tools
 
+![List unique packages](assets/demo-unique.gif)
+
 ```sql
 SELECT DISTINCT tool FROM mise_packages ORDER BY tool;
-```
-
-### Find all Python installations
-
-```sql
-SELECT tool, version, install_path FROM mise_packages WHERE tool = 'python';
 ```
 
 See [example_queries.sql](example_queries.sql) for more SQL query examples.
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ## License
 
