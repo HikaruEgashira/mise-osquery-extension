@@ -34,8 +34,9 @@ jobs:
           go-version-file: 'go.mod'
           cache: true
 
-      - name: Verify module files are tidy
+      - name: Verify module files and checksums
         run: |
+          go mod verify
           go mod tidy
           git diff --exit-code -- go.mod go.sum
         timeout-minutes: 5
