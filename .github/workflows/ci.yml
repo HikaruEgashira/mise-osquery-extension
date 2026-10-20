@@ -42,6 +42,10 @@ jobs:
           git diff --exit-code -- go.mod go.sum
         timeout-minutes: 5
 
+      - name: Verify test dependency graph
+        run: go list -deps -test ./... > /dev/null
+        timeout-minutes: 5
+
       - name: Run go vet
         run: go vet ./...
         timeout-minutes: 5
